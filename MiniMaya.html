@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Mini-Maya Project Details</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/wenqing-wang-97393217a/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/FridaWang" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Oct 29, 2021</span>
+									<h1>Mini-Maya Editor<br />
+									Project Details</h1>
+									<p>A Mesh Editor application in the style of Autodesk Maya or Blender. Implementing with C++ and OpenGL in QT.  
+										Supported features include vertex/edge/face editing, edge division, face triangulation, Catmull-Clack subdivision for smoothing, skeleton binding, and skinning.
+									</p>
+								</header>
+								<div class="image main"><img src="images\MiniMaya\1.PNG" alt="" /></div>
+
+								<h3>Subdivision</h3>
+								<div class="box alt">
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\2.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\3.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\4.PNG" alt="" /></span></div>
+									</div>
+								</div>
+
+								<h3>Edge division &amp; Face triangulation</h3>
+								<div class="box alt">
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\9.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\10.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\11.PNG" alt="" /></span></div>
+									</div>
+								</div>
+								
+								<h3>skeleton binding &amp; Skinning</h3>
+								<div class="box alt">
+									<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\7.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\8.PNG" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images\MiniMaya\6.PNG" alt="" /></span></div>
+									</div>
+								</div>
+								<p>I first implement an interactive skeleton by adding a QTreeWidget to the GUI from which the user can select a joint in the scene's skeleton. The user would be able to alter the position and rotation of the selected joint through additional widgets in the GUI. When a joint is selected, it could change color in the GL view. When the user transforms a joint, it would visually rotate and translate in the GL viewport. The selected joint's current transformation would also be displayed numerically in the GUI for easy tracking. </p>
+								<p>Then I write a new shader composed of two files: skeleton.vert.glsl and skeleton.frag.glsl.  These shaders would transform vertices based on the joints that influence them. I only implement linear blend skinning here. Some of the variables included in my shader are listed below: </p>								
+								<ul class="alt">
+									<li>Bind Matrices: A uniform array of matrices that each describe the bind matrix of a particular joint. Since GLSL arrays must be assigned a size at compile time, I hard-code this to be an array of 100 mat4s here. </li>
+									<li>Joint Transformations: A uniform array of matrices that each describe the current overall transformation of a particular joint. </li>
+									<li>Vertex's influencer IDs: An in variable that contains the IDs of the joints that influence the given vertex which correspond to the index at which its bind and transformation matrices are stored in your arrays. </li>
+									<li>Vertex's weights: An in variable that describes the weights of the joints that influence the given vertex. Each element in this set of weights align with the element in the ID set that corresponds to the joint this weight describes. For example, if a vertex had joint IDs [0, 4] and weights [0.45, 0.55], then joint 0 would have a weight of 0.45 and joint 4 would have a weight of 0.55 on this vertex. </li>
+								</ul>
+
+								<ul class="actions fit">
+									<li><a href="index.html" class="button fit">Back</a></li>
+								</ul>
+							</section>
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<section class="split contact">
+						<section class="alt">
+							<h3>Address</h3>
+							<p>3131 Walnut St<br />
+							Philadelphia, PA, USA, 19104</p>
+						</section>
+						<section>
+							<h3>Phone</h3>
+							<p><a href="#">(610) 604-2965</a></p>
+						</section>
+						<section>
+							<h3>Email</h3>
+							<p><a href="#">wqwang@seas.upenn.edu</a></p>
+						</section>
+						<!-- <section>
+							<h3>Social</h3>
+							<ul class="icons alt">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="https://github.com/FridaWang" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section> -->
+					</section>
+				</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
